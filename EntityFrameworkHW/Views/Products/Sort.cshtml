@@ -1,0 +1,34 @@
+﻿@model IEnumerable<EntityFrameworkHW.Models.ProductInfo >
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.prName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prPrice )
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.prType)
+        </th>
+
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.prType)
+        </td>
+        
+    </tr>
+}
+
+</table>

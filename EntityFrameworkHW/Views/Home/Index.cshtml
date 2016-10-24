@@ -1,0 +1,40 @@
+﻿@{
+    
+    ViewBag.Title = "Index";
+    AjaxOptions options = new AjaxOptions()
+    {
+        UpdateTargetId = "tabledata",
+        Url = Url.Action("Sort", "Films"),
+        HttpMethod = "POST",
+        InsertionMode = InsertionMode.Replace
+
+    };
+}
+
+
+<div class="row">
+    <div class="col-lg-6">
+        
+            @using (Ajax.BeginForm(options))
+            {
+
+                @Html.TextBox("name", null, new { @placeholder = "Product name...", @class = "form-control" , @required = "required" })
+
+                <br>
+                <input class="btn btn-default" type="submit" value="Search product" /> <br />
+                
+            }
+
+        
+        
+    </div>
+    
+        <div class="col-lg-6" >
+            <div id="tabledata">
+                @Html.Action("Sort", "Products")
+            </div>
+            
+        </div>
+    
+   
+</div>
