@@ -31,20 +31,11 @@ namespace EntityFrameworkHW.Controllers
                     
                 }).OrderByDescending(z => z.prPrice).ToList();
 
-            int count = -1;
-            foreach (var item in _products)
-            {
-                count++;
-            }
 
-            for (int i = count; i > 0; i--)
-            {
-                if (_products[i].prId == _products[i - 1].prId)
-                {
-                    _products[i - 1].prType += ", " + _products[i].prType;
-                    _products.Remove(_products[i]);
-                }
-            }
+            // merge objects: pr1(1, "Axe", "Shampoo") with pr1(1, "Axe", "Conditioner")
+            // and result: pr1(1, "Axe", "Shampoo, Conditioner")
+            Combine(_products);
+           
 
             return PartialView(_products);
 
@@ -67,7 +58,18 @@ namespace EntityFrameworkHW.Controllers
 
                             }).ToList();
 
+            // merge objects: pr1(1, "Axe", "Shampoo") with pr1(1, "Axe", "Conditioner")
+            // and result: pr1(1, "Axe", "Shampoo, Conditioner")
+            Combine(_products);
+           
+                return PartialView(_products);
+            
+            
+          
+        }
 
+        public dynamic Combine(List<ProductInfo> _products)
+        {
             int count = -1;
             foreach (var item in _products)
             {
@@ -77,34 +79,12 @@ namespace EntityFrameworkHW.Controllers
             for (int i = count; i > 0; i--)
             {
                 if (_products[i].prId == _products[i - 1].prId)
-                    {
-                    _products[i-1].prType += ", " + _products[i].prType;
+                {
+                    _products[i - 1].prType += ", " + _products[i].prType;
                     _products.Remove(_products[i]);
                 }
             }
-
-                return PartialView(_products);
-            
-            
-          
-        }
-
-        public dynamic Combine(object item1, object item2)
-        {
-            if (item1 == null || item2 == null)
-                return item1 ?? item2 ?? new ExpandoObject();
-
-            dynamic expando = new ExpandoObject();
-            var result = expando as IDictionary<string, object>;
-            foreach (System.Reflection.PropertyInfo fi in item1.GetType().GetProperties())
-            {
-                result[fi.Name] = fi.GetValue(item1, null);
-            }
-            foreach (System.Reflection.PropertyInfo fi in item2.GetType().GetProperties())
-            {
-                result[fi.Name] = fi.GetValue(item2, null);
-            }
-            return result;
+            return _products;
         }
 
 

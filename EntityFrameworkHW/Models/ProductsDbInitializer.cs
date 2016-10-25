@@ -19,6 +19,9 @@ namespace DatabaseInitializers.Models
 
             context.ProductTypes.Add(new ProductType() { ProductTypeId = 1, ProductId = 1, Name = "Shampoo" });
             context.ProductTypes.Add(new ProductType() { ProductTypeId = 2, ProductId = 1, Name = "Conditioner" });
+            context.ProductTypes.Add(new ProductType() { ProductTypeId = 3, ProductId = 2, Name = "Shampoo" });
+            context.ProductTypes.Add(new ProductType() { ProductTypeId = 4, ProductId = 2, Name = "Conditioner" });
+            context.ProductTypes.Add(new ProductType() { ProductTypeId = 5, ProductId = 3, Name = "Conditioner" });
 
             base.Seed(context);
         }
