@@ -1,8 +1,10 @@
-﻿using System.Data.Entity;
+﻿using EntityFrameworkHW.Models;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using DatabaseInitializers.Models;
 
 namespace EntityFrameworkHW.Models
 {
@@ -23,6 +25,7 @@ namespace EntityFrameworkHW.Models
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+            
         }
 
         public DbSet<Product> Products { get; set; }
@@ -32,5 +35,6 @@ namespace EntityFrameworkHW.Models
         {
             return new ApplicationDbContext();
         }
+        
     }
 }

@@ -15,7 +15,6 @@ namespace EntityFrameworkHW
         protected void Application_Start()
         {
             Database.SetInitializer(new ProductsDbInitializer());
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

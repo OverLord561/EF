@@ -28,7 +28,7 @@ namespace EntityFrameworkHW.Controllers
                     prName = p.ProductName,
                     prPrice = p.ProductPrice,
                     prType = c.Name,
-                    
+
                 }).OrderByDescending(z => z.prPrice).ToList();
 
 
